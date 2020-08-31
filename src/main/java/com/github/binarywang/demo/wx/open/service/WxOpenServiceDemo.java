@@ -2,15 +2,9 @@ package com.github.binarywang.demo.wx.open.service;
 
 import com.github.binarywang.demo.wx.open.config.RedisProperies;
 import com.github.binarywang.demo.wx.open.config.WechatOpenProperties;
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.common.session.WxSessionManager;
-import me.chanjar.weixin.mp.api.WxMpService;
-import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
-import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import me.chanjar.weixin.open.api.impl.WxOpenInRedisConfigStorage;
-import me.chanjar.weixin.open.api.impl.WxOpenServiceImpl;
-import me.chanjar.weixin.mp.api.WxMpMessageHandler;
 import me.chanjar.weixin.open.api.impl.WxOpenMessageRouter;
+import me.chanjar.weixin.open.api.impl.WxOpenServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +13,6 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.JedisPool;
 
 import javax.annotation.PostConstruct;
-import java.util.Map;
 
 /**
  * @author <a href="https://github.com/007gzs">007</a>
@@ -32,7 +25,7 @@ public class WxOpenServiceDemo extends WxOpenServiceImpl {
     private WechatOpenProperties wechatOpenProperties;
     @Autowired
     private RedisProperies redisProperies;
-    private static JedisPool pool;
+    private volatile static JedisPool pool;
     private WxOpenMessageRouter wxOpenMessageRouter;
 
     @PostConstruct
