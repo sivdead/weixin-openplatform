@@ -2,16 +2,18 @@ logging:
   level:
     org.springframework.web: DEBUG
     com.github.binarywang.demo.wx.open: DEBUG
-
-wechat:
-  open:
-    componentAppId: ""
-    componentSecret: ""
-    componentToken: ""
-    componentAesKey: ""
-  redis:
-    host: "127.0.0.1"
-server:
-  port: 80
-
-
+spring:
+  resources:
+    static-locations:
+     - classpath:/resources/static/
+     - classpath:/META-INF/resources/
+     - classpath:/resources/
+     - classpath:/static/
+     - classpath:/public/
+  jpa:
+    generate-ddl: on
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  profiles:
+    active: dev

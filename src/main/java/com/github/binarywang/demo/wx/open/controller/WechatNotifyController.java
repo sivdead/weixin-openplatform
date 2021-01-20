@@ -1,6 +1,6 @@
 package com.github.binarywang.demo.wx.open.controller;
 
-import com.github.binarywang.demo.wx.open.service.WxOpenServiceDemo;
+import com.github.binarywang.demo.wx.open.service.WxOpenService;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.bean.kefu.WxMpKefuMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class WechatNotifyController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
-    protected WxOpenServiceDemo wxOpenService;
+    protected WxOpenService wxOpenService;
 
     @RequestMapping("/receive_ticket")
     public Object receiveTicket(@RequestBody(required = false) String requestBody, @RequestParam("timestamp") String timestamp,
