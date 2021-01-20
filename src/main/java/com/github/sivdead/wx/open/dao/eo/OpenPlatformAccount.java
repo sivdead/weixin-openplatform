@@ -1,4 +1,4 @@
-package com.github.binarywang.demo.wx.open.dao.eo;
+package com.github.sivdead.wx.open.dao.eo;
 
 import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;

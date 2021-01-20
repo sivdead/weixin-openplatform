@@ -1,4 +1,4 @@
-package com.github.binarywang.demo.wx.open.hibernate;
+package com.github.sivdead.wx.open.hibernate;
 
 import cn.hutool.core.util.StrUtil;
 import org.hibernate.boot.model.naming.Identifier;

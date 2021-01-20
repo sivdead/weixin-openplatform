@@ -1,7 +1,7 @@
-package com.github.binarywang.demo.wx.open.service;
+package com.github.sivdead.wx.open.service;
 
-import com.github.binarywang.demo.wx.open.config.RedisProperties;
-import com.github.binarywang.demo.wx.open.config.WechatOpenProperties;
+import com.github.sivdead.wx.open.config.RedisProperties;
+import com.github.sivdead.wx.open.config.WechatOpenProperties;
 import me.chanjar.weixin.open.api.impl.WxOpenInRedisConfigStorage;
 import me.chanjar.weixin.open.api.impl.WxOpenMessageRouter;
 import me.chanjar.weixin.open.api.impl.WxOpenServiceImpl;
