@@ -4,13 +4,10 @@ logging:
     com.github.binarywang.demo.wx.open: DEBUG
 wechat:
   open:
-    componentAppId: "wxa133b23f2e87581e"
-    componentSecret: "9bcc3804e2386c14e5308aaa20930d4e"
+    componentAppId: "wx6bba6282ee119751"
+    componentSecret: "32bb6e28a5d1d3d6ab56c4166a9d458d"
     componentToken: "123321"
-    componentAesKey: "1234567890123456789012345678901234567890123"
-  redis:
-    host: "127.0.0.1"
-    password: 123456
+    componentAesKey: "NDlkMTNmNTRkNmFhNDU0ZGFhMWY4ZjJhMDAyNDE5Njk"
 server:
   port: 80
 spring:
@@ -19,3 +16,11 @@ spring:
     url: jdbc:mysql://localhost:3306/wx_open?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
+  redis:
+    password: 123456
+    host: 127.0.0.1
+minio:
+  endpoint: http://127.0.0.1:9000
+  accessKey: admin
+  accessSecret: admin123
+  bucketName: dev

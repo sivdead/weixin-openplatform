@@ -2,6 +2,9 @@ logging:
   level:
     org.springframework.web: DEBUG
     com.github.binarywang.demo.wx.open: DEBUG
+    org.hibernate.engine.spi: DEBUG
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
 spring:
   resources:
     static-locations:
@@ -17,3 +20,17 @@ spring:
     show-sql: true
   profiles:
     active: dev
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  cache:
+    type: redis
+    redis:
+      key-prefix: wx-open
+  data:
+    redis:
+      repositories:
+        enabled: false

@@ -3,7 +3,7 @@ package com.github.sivdead.wx.open.dao.repository;
 import com.github.sivdead.wx.open.dao.eo.OpenPlatformAccount;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface OpenPlatformAccountRepository extends JpaRepository<OpenPlatformAccount, Long> {
+public interface OpenPlatformAccountRepository extends JpaRepository<OpenPlatformAccount, String> {
 
     OpenPlatformAccount findByPrincipalName(String principalName);
 

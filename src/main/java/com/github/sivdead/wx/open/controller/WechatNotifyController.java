@@ -1,15 +1,15 @@
 package com.github.sivdead.wx.open.controller;
 
-import com.github.sivdead.wx.open.service.WxOpenService;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.bean.kefu.WxMpKefuMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
+import me.chanjar.weixin.open.api.WxOpenService;
+import me.chanjar.weixin.open.api.impl.WxOpenMessageRouter;
 import me.chanjar.weixin.open.bean.message.WxOpenXmlMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -19,8 +19,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/notify")
 public class WechatNotifyController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Autowired
-    protected WxOpenService wxOpenService;
+    protected final WxOpenService wxOpenService;
+    private final WxOpenMessageRouter wxOpenMessageRouter;
+
+    public WechatNotifyController(WxOpenService wxOpenService, WxOpenMessageRouter wxOpenMessageRouter) {
+        this.wxOpenService = wxOpenService;
+        this.wxOpenMessageRouter = wxOpenMessageRouter;
+    }
+
 
     @RequestMapping("/receive_ticket")
     public Object receiveTicket(@RequestBody(required = false) String requestBody, @RequestParam("timestamp") String timestamp,
@@ -99,9 +105,9 @@ public class WechatNotifyController {
             } catch (WxErrorException e) {
                 logger.error("callback", e);
             }
-        }else{
-            WxMpXmlOutMessage outMessage = wxOpenService.getWxOpenMessageRouter().route(inMessage, appId);
-            if(outMessage != null){
+        } else {
+            WxMpXmlOutMessage outMessage = wxOpenMessageRouter.route(inMessage, appId);
+            if (outMessage != null) {
                 out = WxOpenXmlMessage.wxMpOutXmlMessageToEncryptedXml(outMessage, wxOpenService.getWxOpenConfigStorage());
             }
         }

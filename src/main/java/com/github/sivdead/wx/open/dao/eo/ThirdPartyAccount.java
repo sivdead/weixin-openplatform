@@ -10,21 +10,21 @@ import javax.validation.constraints.NotNull;
 
 import static javax.persistence.ConstraintMode.NO_CONSTRAINT;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(
         name = "third_party_account",
         indexes = {
-                @Index(columnList = "platform_account_id", name = "idx_platform_account_id")
+                @Index(columnList = "platform_account_id", name = "idx_platform_account_id"),
+                @Index(columnList = "app_id", name = "idx_app_id"),
         })
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ThirdPartyAccount extends AbstractPersistable<Long> {
+public class ThirdPartyAccount{
 
-
-    @Column(unique = true)
+    @Id
+    @Column(name = "app_id")
     private String appId;
 
     private String appSecret;
@@ -60,22 +60,22 @@ public class ThirdPartyAccount extends AbstractPersistable<Long> {
 
     private String principalName;
 
-    @JoinColumn(name = "platform_account_id", referencedColumnName = "id", foreignKey = @ForeignKey(NO_CONSTRAINT))
-    @ManyToOne(targetEntity = OpenPlatformAccount.class, fetch = FetchType.LAZY, optional = false)
-    OpenPlatformAccount openPlatformAccount;
+    @JoinColumn(name = "platform_account_id", referencedColumnName = "app_id", foreignKey = @ForeignKey(NO_CONSTRAINT))
+    @ManyToOne(targetEntity = OpenPlatformAccount.class, fetch = FetchType.LAZY)
+    private OpenPlatformAccount openPlatformAccount;
 
-    public static ThirdPartyAccount buildFromWxOpenAuthorizerInfo(@NotBlank String appId,@NotNull WxOpenAuthorizerInfo authorizerInfo){
-         return ThirdPartyAccount.builder()
-                 .nickName(authorizerInfo.getNickName())
-                 .alias(authorizerInfo.getAlias())
-                 .appId(appId)
-                 .headImg(authorizerInfo.getHeadImg())
-                 .principalName(authorizerInfo.getPrincipalName())
-                 .serviceType(authorizerInfo.getServiceTypeInfo())
-                 .verifyType(authorizerInfo.getVerifyTypeInfo())
-                 .signature(authorizerInfo.getSignature())
-                 .qrcodeUrl(authorizerInfo.getQrcodeUrl())
-                 .username(authorizerInfo.getUserName())
-                 .build();
+    public static ThirdPartyAccount buildFromWxOpenAuthorizerInfo(@NotBlank String appId, @NotNull WxOpenAuthorizerInfo authorizerInfo) {
+        return ThirdPartyAccount.builder()
+                .nickName(authorizerInfo.getNickName())
+                .alias(authorizerInfo.getAlias())
+                .headImg(authorizerInfo.getHeadImg())
+                .principalName(authorizerInfo.getPrincipalName())
+                .serviceType(authorizerInfo.getServiceTypeInfo())
+                .verifyType(authorizerInfo.getVerifyTypeInfo())
+                .signature(authorizerInfo.getSignature())
+                .qrcodeUrl(authorizerInfo.getQrcodeUrl())
+                .username(authorizerInfo.getUserName())
+                .appId(appId)
+                .build();
     }
 }
