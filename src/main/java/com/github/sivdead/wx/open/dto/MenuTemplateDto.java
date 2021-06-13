@@ -4,9 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
@@ -20,7 +24,8 @@ public class MenuTemplateDto {
 
     private Long id;
 
-    @Max(3)
+    @Size(max = 3)
+    @Valid
     private List<MenuItemDto> menuItems;
 
 }

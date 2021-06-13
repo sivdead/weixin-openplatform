@@ -29,6 +29,8 @@
         <hutool.version>4.5.17</hutool.version>
         <fastjson.version>1.2.75</fastjson.version>
         <minio.version>3.0.10</minio.version>
+        <screw.version>1.0.5</screw.version>
+        <easyexcel.version>1.1.2-beta4</easyexcel.version>
     </properties>
     <dependencies>
         <dependency>
@@ -44,6 +46,11 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>${easyexcel.version}</version>
         </dependency>
 
         <dependency>
@@ -98,11 +105,10 @@
             <artifactId>weixin-java-open</artifactId>
             <version>${weixin-java.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.redisson/redisson-spring-boot-starter -->
         <dependency>
-            <groupId>org.redisson</groupId>
-            <artifactId>redisson-spring-boot-starter</artifactId>
-            <version>3.15.0</version>
+            <groupId>cn.smallbun.screw</groupId>
+            <artifactId>screw-core</artifactId>
+            <version>${screw.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.binarywang</groupId>

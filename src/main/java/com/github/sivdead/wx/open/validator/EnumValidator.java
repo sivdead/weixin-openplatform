@@ -1,5 +1,7 @@
 package com.github.sivdead.wx.open.validator;
 
+import org.springframework.stereotype.Component;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

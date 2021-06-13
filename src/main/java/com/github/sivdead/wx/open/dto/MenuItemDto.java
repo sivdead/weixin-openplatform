@@ -1,10 +1,12 @@
 package com.github.sivdead.wx.open.dto;
 
-import com.github.sivdead.wx.open.dao.eo.Media;
-import lombok.*;
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import com.github.sivdead.wx.open.constant.MenuType;
+import com.github.sivdead.wx.open.validator.ValidEnum;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class MenuItemDto {
      * sub_button：子菜单
      */
     @NotBlank
+    @ValidEnum(enumClass = MenuType.class)
     private String type;
 
     private Long menuTemplateId;
